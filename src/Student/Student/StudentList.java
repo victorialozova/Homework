@@ -7,7 +7,9 @@ public class StudentList {
 	private int p = 0;
 	
 	public void add(Student s) {
-		list[p++] = s;
+		if (p < 100) {
+			list[p++] = s;
+		}
 	}
 	//предусмотрен выход за пределы списка
 	public Student get(int n) {
