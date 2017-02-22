@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class MyClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		StudentList sl = new StudentList();
 		
 		sl.add(new Student("Seva", "Evgienko", new Date	(1986, 1, 1)));

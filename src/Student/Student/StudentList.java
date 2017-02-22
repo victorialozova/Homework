@@ -5,8 +5,12 @@ import java.util.Date;
 public class StudentList {
 	private Student[] list = new Student[100];
 	private int p = 0;
-	
-	public void add(Student s) {
+
+	//проверка корректности даты и имени
+	public void add(Student s) throws Exception{
+		if (s.getName().isEmpty() || s.getBirth() == null) {
+			throw new Exception("Invalid data");
+		}
 		if (p < 100) {
 			list[p++] = s;
 		}
@@ -47,8 +51,13 @@ public class StudentList {
 	//ф-я удаления студента из списка + предусмотрен выход за пределы списка
 	public void deleteStudent(String name) {
 		int number = find(name);
+		deleteStudent(number);
+	}
+
+	//ф-я удаления студента из списка по номеру + предусмотрен выход за пределы списка
+	public void deleteStudent(int number) {
 		for (int i = number; i < p; i++) {
-			if ((i + 1) < list.length && i > 0)  {
+			if ((i + 1) < list.length && i >= 0)  {
 				list[i] = list[i + 1];
 			}
 		}
