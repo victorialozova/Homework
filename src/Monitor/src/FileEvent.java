@@ -1,6 +1,5 @@
 package Monitor.src;
 
-import java.util.Date;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,6 +19,7 @@ public class FileEvent implements IFileEvent {
 		}
 	}
 
+	//Добавить в проект «монитор» функцию вывода даты создания файла на экран (см. java.io.File).
 	public void dateCreation() throws IOException {
 		File f = new File("1.txt");
 		FileWriter fw = new FileWriter(f);
