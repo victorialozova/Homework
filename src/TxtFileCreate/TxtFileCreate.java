@@ -25,11 +25,12 @@ public class TxtFileCreate {
     private static void findFiles(String srcPath, ArrayList<String> list) throws IOException {
         File dir = new File(srcPath);
         File[] files = dir.listFiles();
-
         for (int i = 0; i < files.length; i++) {
-            Long lastModified = files[i].lastModified();
-            Date date = new Date(lastModified);
-            list.add(files[i].getName() + " " + files[i].getCanonicalPath() + " " + String.valueOf(date));
+            if (files[i].isFile()) {
+                Long lastModified = files[i].lastModified();
+                Date date = new Date(lastModified);
+                list.add(files[i].getName() + " " + files[i].getCanonicalPath() + " " + String.valueOf(date));
+            }
         }
     }
 }
