@@ -17,16 +17,15 @@ public class ThreadsInTxt extends Thread {
     }
 
     public void run() {
-        synchronized (this) {
             try (RandomAccessFile r = new RandomAccessFile(path, "rw")) {
+                synchronized (path){
                 byte[] text = txt.getBytes();
                 r.seek(r.length());
                 r.write(text);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            notifyAll();
-        }
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -36,7 +35,6 @@ public class ThreadsInTxt extends Thread {
         }
         for (ThreadsInTxt thr : th) {
             thr.start();
-            //thr.join(); если добавить ожидание завершения потока, то отрабатывает программа нормально, но тогда нет смысла в synchronized
         }
     }
 }
